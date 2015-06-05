@@ -1,0 +1,136 @@
+.thing-form {
+    margin: 20px 0;
+}
+
+
+#banner {
+    border-bottom: none;
+    margin-top: -20px;
+}
+
+#banner h1 {
+    font-size: 60px;
+    line-height: 1;
+    letter-spacing: -1px;
+}
+
+.hero-unit {
+    position: relative;
+    z-index: 10;
+    background-color: rgba(0,0,0,0.2);
+    padding: 30px 15px;
+    text-align: center;
+    text-shadow: 0 1px 0 rgba(0, 0, 0, 0.1);
+}
+
+.footer {
+    text-align: center;
+    padding: 30px 0;
+    margin-top: 70px;
+    border-top: 1px solid #E5E5E5;
+}
+.left-side {
+    height: 100%;
+}
+.angular-google-map-container {
+    min-height: 600px;
+    height: 100%;
+}
+.marker-label {
+    background-color: rgba(255, 255, 255, .7);
+}
+.rotate {
+    cursor:pointer;
+}
+
+.pressed .rotate {
+    color:#afafaf;
+    -moz-animation: spin .4s 1 ease-in-out;
+    -o-animation: spin .4s 1 ease-in-out;
+    -webkit-animation: spin .4s 1 ease-in-out;
+    animation: spin .4s 1 ease-in-out;
+}
+
+@-webkit-keyframes spin {
+    0% { -webkit-transform: rotate(0deg); }
+    100% { -webkit-transform: rotate(359deg); }
+}
+
+@-moz-keyframes spin {
+    0% { -moz-transform: rotate(0deg); }
+    100% { -moz-transform: rotate(359deg); }
+}
+
+@-o-keyframes spin {
+    0% { -o-transform: rotate(0deg); }
+    100% { -o-transform: rotate(359deg); }
+}
+
+@-ms-keyframes spin {
+    0% { -ms-transform: rotate(0deg); }
+    100% { -ms-transform: rotate(359deg); }
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(359deg); }
+}
+
+.non-active .rotate {
+    color:#afafaf;
+    -moz-animation: backspin .4s 1 ease-in-out;
+    -o-animation: backspin .4s 1 ease-in-out;
+    -webkit-animation: backspin .4s 1 ease-in-out;
+    animation: backspin .4s 1 ease-in-out;
+}
+
+@-webkit-keyframes backspin {
+    0% { -webkit-transform: rotate(359deg); }
+    100% { -webkit-transform: rotate(0deg); }
+}
+
+@-moz-keyframes backspin {
+    0% { -moz-transform: rotate(359deg); }
+    100% { -moz-transform: rotate(0deg); }
+}
+
+@-o-keyframes backspin {
+    0% { -o-transform: rotate(359deg); }
+    100% { -o-transform: rotate(0deg); }
+}
+
+@-ms-keyframes backspin {
+    0% { -ms-transform: rotate(359deg); }
+    100% { -ms-transform: rotate(0deg); }
+}
+
+@keyframes backspin {
+    0% { transform: rotate(359deg); }
+    100% { transform: rotate(0deg); }
+}
+
+.circle {
+    display: inline-block;
+    border-radius: 50%;
+    transition: .3s;
+}
+.non-active {
+    opacity: 0.9;
+}
+.spinning-icon {
+    border-radius: 50%;
+}
+.spinning-icon {
+    height: 50px;
+    width: 50px;
+    color: red;
+    font-size: 20px;
+    background: url(../assets/images/flickr_icon.png);
+    background-size: 30px, 34px;
+    background-repeat: no-repeat;
+}
+
+.pressed {
+    box-shadow: -1px 9px 21px rgba(0,0,0,0.7);
+    z-index: 10;
+}

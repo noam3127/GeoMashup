@@ -1,0 +1,121 @@
+<div ng-include="'components/navbar/navbar.html'"></div>
+
+<aside class="left-side col-md-4">
+  <form>
+    <div class="input-group">
+      <!-- <h1>Where shall we go?</h1> -->
+      <input type="text" class="form-control floating-label input-lg" placeholder="Where shall we go?" ng-model="query"/>
+      <span class="input-group-btn">
+        <button class="btn btn-primary" ng-click="getData()">Go</button>
+      </span>
+    </div>
+  </form>
+
+  <span class="dropdown" ng-if="showDropdown"><i class="mdi-navigation-menu"></i>
+    <!-- <ul>
+      <li ng-repeat="place in flickrPlaces">
+        <a> {{place._content}}</a>
+      </li>
+    </ul> -->
+    <select class="form control" ng-model="selectedPlace" ng-options="place.place_id as place._content for place in flickrPlaces">
+    </select>
+  </span>
+  <div class="row"></div>
+
+  <tabset justified="true" >
+    <tab select="active = 'wikipedia'">
+      <tab-heading>
+        <span class="circle" ng-class="{'pressed': active=='wikipedia', 'non-active': active !== 'wikipedia'}">
+          <img class="rotate spinning-icon" src="../assets/images/wikipedia_globe_icon.jpeg">
+        </span>
+      </tab-heading>
+      <accordion close-others="true">
+        <div ng-repeat="item in wikiPlaces">
+          <accordion-group heading="{{item.title}}" ng-click="moveCenter(item.coords)">
+           </accordion-heading>
+            <img class="pull-right" ng-src="{{item.thumbnailImg}}"/>
+            <div class="description">
+              {{item.summary}}
+              <a class="link" ng-href="http://{{item.wikipediaUrl}}" target="_blank">read more</a>
+            </div>
+          </accordion-group>
+        </div>
+      </accordion>
+    </tab>
+
+    <tab select="active = 'flickr'">
+      <tab-heading>
+        <span class="circle" ng-class="{'pressed': active ==='flickr', 'non-active': active !== 'flickr'}">
+          <img class="rotate spinning-icon" src="../assets/images/flickr_icon.png">
+        </span>
+      </tab-heading>
+      <span ng-repeat="item in flickrThumbs">
+        <img ng-src="{{item}}"/>
+      <span>
+    </tab>
+
+    <tab select="active = 'panoramio'">
+      <tab-heading>
+        <span class="circle" ng-class="{'pressed': active==='panoramio', 'non-active': active !== 'panoramio'}">
+          <img class="rotate spinning-icon" src="../assets/images/panoramio_icon.png">
+        </span>
+      </tab-heading>
+      <accordion close-others="oneAtATime">
+        <span ng-repeat="photo in panoramioPhotos">
+          <img ng-src="{{photo.photo_file_url}}"/>
+        </span>
+      </accordion>
+    </tab>
+
+    <tab select="active = 'expedia'">
+      <tab-heading >
+        <span class="circle" ng-class="{'pressed': active=='expedia', 'non-active': active !== 'expedia'}">
+          <img class="rotate spinning-icon" src="../assets/images/expedia_icon.jpeg">
+        </span>
+      </tab-heading>
+      <accordion close-others="oneAtATime">
+        <div ng-repeat="item in hotelItems">
+          <accordion-group heading="{{item.title}}">
+            {{item.body}}
+          </accordion-group>
+        </div>
+      </accordion>
+    </tab>
+  </tabset>
+</aside>
+<span ng-repeat="markerGroup in markers">
+    <span ng-repeat="marker in markerGroup.markers track by $index">
+    <img ng-src="{{marker.icon}}"/>
+    </span>
+</span>
+<ui-gmap-google-map control="map.control" center="map.center" events="map.events" zoom="map.zoom" pan="true">
+  <span ng-repeat="markerGroup in markers">
+   <!--  <ui-gmap-marker ng-repeat="marker in markerGroup.markers track by $index" -->
+    <ui-gmap-markers
+        models="markerGroup.markers"
+        idKey="'id'"
+        icon="'icon'"
+        coords="'coords'">
+    </ui-gmap-marker>
+  </span>
+
+</ui-gmap-google-map>
+<!-- <div class="container">
+  <div class="row">
+    <div class="col-lg-12">
+      <h1 class="page-header">Features:</h1>
+      <ul class="nav nav-tabs nav-stacked col-md-4 col-lg-4 col-sm-6" ng-repeat="thing in awesomeThings">
+        <li><a href="#" tooltip="{{thing.info}}">{{thing.name}}</a></li>
+      </ul>
+    </div>
+  </div>
+</div> -->
+
+<footer class="footer">
+  <div class="container">
+      <p>Geo-Aggregator |
+        <a href="https://github.com/noam3127" target="_blank">Noam Lustiger</a> |
+        <a href="https://github.com/noam3127" target="_blank">noam3127</a>
+      </p>
+  </div>
+</footer>
